@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charles David Keeling - présentation par Tom C</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+<style>
+    :root {
+	--fond: #e6eddc;
+	--carte: #f7f9f2;
+	--vert-fonce: #1f3d2e;
+	--vert: #3f6b4a;
+	--vert-clair: #8fb573;
+	--marron: #7a5638;
+	--texte: #1d2b22;
+	--gris: #4a5d50;
+	--bordure: #c5d3b5;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 80px;
+}
+
+body {
+	min-height: 100vh;
+	color: var(--texte);
+	font-family: "JetBrains Mono", monospace;
+	font-size: 0.95rem;
+	line-height: 1.75;
+	background-color: var(--fond);
+}
+
+a:focus-visible {
+	outline: 3px solid var(--marron);
+	outline-offset: 3px;
+}
+
+/* nav bar */
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+	padding: 14px 5%;
+	background: var(--vert-fonce);
+}
+
+nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 8px 28px;
+	list-style: none;
+}
+
+nav a {
+	color: #dfe9d3;
+	font-weight: 700;
+	text-decoration: none;
+	padding-bottom: 2px;
+	border-bottom: 2px solid transparent;
+	transition: border-color 0.2s;
+}
+
+nav a:hover {
+	border-bottom-color: var(--vert-clair);
+}
+
+/* Titre */
+.title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 50px;
+	max-width: 1050px;
+	min-height: 75vh;
+	margin: auto;
+	padding: 130px 30px 60px;
+}
+
+.title h1 {
+	max-width: 620px;
+	color: var(--vert-fonce);
+	font-size: clamp(2.3rem, 7vw, 5rem);
+	font-weight: 800;
+	line-height: 1.05;
+	letter-spacing: -2px;
+}
+
+.title img {
+	width: 240px;
+	height: 240px;
+	object-fit: cover;
+	border: 6px solid var(--vert);
+	border-radius: 50%;
+	transition: transform 0.4s ease;
+}
+
+.title img:hover {
+	transform: scale(1.1);
+}
+
+/* Sections */
+.presentation {
+	max-width: 880px;
+	margin: 0 auto 40px;
+	padding: 40px 46px;
+	background: var(--carte);
+	border: 1px solid var(--bordure);
+	border-radius: 8px;
+}
+
+.presentation h2 {
+	margin-bottom: 16px;
+	color: var(--vert);
+	font-size: 1.5rem;
+	line-height: 1.3;
+}
+
+.presentation h3 {
+	margin: 24px 0 10px;
+	color: var(--marron);
+	font-size: 1.05rem;
+}
+
+.presentation p {
+	margin-bottom: 18px;
+	color: var(--gris);
+	max-width: 68ch;
+}
+
+.presentation ul {
+	margin: 10px 0 20px 22px;
+	color: var(--gris);
+	max-width: 68ch;
+}
+
+.presentation li {
+	margin-bottom: 10px;
+	padding-left: 4px;
+}
+
+.presentation ul li::marker {
+	color: var(--vert);
+}
+
+/* Ligne de vie */
+.ligne-de-vie {
+	list-style: none;
+	position: relative;
+	margin: 14px 0 0 6px;
+	padding-left: 28px;
+	color: var(--gris);
+}
+
+.ligne-de-vie::before {
+	content: "";
+	position: absolute;
+	top: 10px;
+	bottom: 10px;
+	left: 4px;
+	width: 2px;
+	background: var(--vert-clair);
+}
+
+.ligne-de-vie li {
+	position: relative;
+	margin-bottom: 12px;
+	padding-left: 0;
+	max-width: 62ch;
+}
+
+.ligne-de-vie li::before {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: -29px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: var(--vert);
+}
+
+.ligne-de-vie .date {
+	display: inline-block;
+	min-width: 3.5em;
+	margin-right: 6px;
+	color: var(--marron);
+	font-weight: 700;
+}
+
+/* Graphique */
+.graphique {
+	margin-top: 10px;
+}
+
+.graphique svg {
+	display: block;
+	width: 100%;
+	height: auto;
+	background: #edf3e3;
+	border: 1px solid var(--bordure);
+	border-radius: 6px;
+}
+
+.graphique .axe {
+	stroke: var(--vert-fonce);
+	stroke-width: 2;
+}
+
+.graphique .texte {
+	fill: var(--vert-fonce);
+	font-family: "JetBrains Mono", monospace;
+	font-size: 13px;
+}
+
+.graphique .trace {
+	fill: none;
+	stroke: var(--vert);
+	stroke-width: 2.5;
+	stroke-linejoin: round;
+}
+
+.graphique figcaption {
+	margin-top: 10px;
+	color: var(--gris);
+	font-size: 0.85rem;
+}
+
+/* Footer */
+footer {
+	margin-top: 60px;
+	padding: 40px 7%;
+	background: var(--vert-fonce);
+	color: #d3e0c6;
+}
+
+footer h2 {
+	max-width: 880px;
+	margin: 0 auto 14px;
+	color: #fff;
+	font-size: 1.3rem;
+}
+
+footer ul {
+	max-width: 880px;
+	margin: 0 auto;
+	padding-left: 20px;
+	font-size: 0.88rem;
+}
+
+footer li {
+	margin-bottom: 8px;
+}
+
+footer a {
+	color: #b9d99d;
+	word-break: break-word;
+}
+
+footer a:hover {
+	color: #fff;
+}
+
+footer .credit {
+	max-width: 880px;
+	margin: 22px auto 0;
+	padding-top: 14px;
+	border-top: 1px solid rgba(211, 224, 198, 0.3);
+	font-size: 0.8rem;
+	color: #a3b895;
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+	.title {
+		flex-direction: column;
+		align-items: flex-start;
+		min-height: auto;
+		padding-top: 120px;
+		gap: 30px;
+	}
+
+	.title img {
+		width: 180px;
+		height: 180px;
+	}
+
+	.presentation {
+		margin-left: 12px;
+		margin-right: 12px;
+		padding: 26px 20px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
+	.title img, nav a { transition: none; }
+}
+
+</style>
+</head>
+
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="#Qui">Qui ?</a></li>
+            <li><a href="#facts">Quoi ?</a></li>
+            <li><a href="#courbe">La courbe</a></li>
+            <li><a href="#fin">Conclusions</a></li>
+            <li><a href="#sources">Sources</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="title">
+    <h1>Charles David Keeling</h1>
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Charles_David_Keeling_2001.jpg/250px-Charles_David_Keeling_2001.jpg?utm_source=fr.wikipedia.org&utm_campaign=parser&utm_content=thumbnail" alt="Charles David Keeling">
+</div>
+
+<div id="Qui" class="presentation">
+    <h2>Qui est-il ?</h2>
+    <p>
+        Charles David Keeling (on l'appelait Dave) est né le 20 avril 1928 à Scranton
+        en Pennsylvanie, aux États-Unis. Il est mort le 20 juin 2005 à Hamilton
+        dans le Montana, toujours aux USA. C'était un scientifique américain,
+        spécialisé en chimie.
+    </p>
+    <p>
+        Il a fait ses études de chimie à l'université de l'Illinois, puis un doctorat
+        à Northwestern. Ensuite il a travaillé au Caltech, et à partir de 1956 à la
+        Scripps Institution of Oceanography, en Californie. Il y est resté jusqu'à sa mort
+        et il a écrit plus de 100 articles scientifiques.
+    </p>
+    <p>
+        Il jouait aussi très bien du piano classique, et il a failli
+        devenir musicien plutôt que scientifique.
+    </p>
+
+    <h3>Sa ligne de vie</h3>
+    <ol class="ligne-de-vie">
+        <li><span class="date">1928</span> Naissance à Scranton.</li>
+        <li><span class="date">1948</span> Diplôme de l'université de l'Illinois.</li>
+        <li><span class="date">1954</span> Doctorat de chimie à Northwestern.</li>
+        <li><span class="date">1956</span> Il entre à la Scripps Institution of Oceanography.</li>
+        <li><span class="date">1958</span> Premières mesures à Mauna Loa.</li>
+        <li><span class="date">1964</span> Le programme est arrêté pour un temps à cause de coupes dans le budget. Keeling se bat pour le garder.</li>
+        <li><span class="date">1997</span> Il est récompensé lors d'une cérémonie à la Maison-Blanche pour 40 ans de mesures.</li>
+        <li><span class="date">2002</span> Il reçoit la National Medal of Science.</li>
+        <li><span class="date">2005</span> Il meurt à Hamilton (Montana).</li>
+    </ol>
+</div>
+
+<div id="facts" class="presentation">
+    <h2>Qu'a-t-il fait ?</h2>
+    <p>
+        Il a mesuré l'évolution du dioxyde de carbone (CO₂) dans l'atmosphère.
+    </p>
+    <h3>Ses travaux principaux</h3>
+    <ul>
+        <li>À partir de 1958, il a effectué des mesures continues du CO₂ à l'observatoire de Mauna Loa, à Hawaï, à plus de 3 000 mètres d'altitude. L'air y est parmi les plus purs de la planète.</li>
+        <li>Il a découvert que la concentration de CO₂ augmentait régulièrement, avec des variations saisonnières : elle baisse au printemps et en été quand les plantes poussent, puis remonte.</li>
+        <li>Ces données ont produit la courbe de Keeling, l'un des premiers relevés directs montrant l'influence des combustibles fossiles sur l'atmosphère.</li>
+        <li>Ses travaux ont fourni des preuves essentielles du réchauffement climatique d'origine humaine.</li>
+        <li>Il a également contribué à montrer que les océans et la biosphère absorbent une partie du CO₂ émis.</li>
+        <li>Il a mis au point une méthode appelée « Keeling plot » pour analyser l'air respiré par les plantes (à ne pas confondre avec la courbe de Keeling).</li>
+    </ul>
+    <p>
+        La série de mesures commencée par Keeling est devenue
+        l'une des plus longues observations continues du CO₂
+        atmosphérique au monde. Elle continue encore aujourd'hui, notamment avec son fils
+        Ralph Keeling, qui est aussi climatologue à Scripps.
+    </p>
+</div>
+
+<div id="courbe" class="presentation">
+    <h2>La courbe de Keeling</h2>
+    <p>
+        Au bout de quelques années de mesures, l'augmentation du CO₂ n'était plus
+        une théorie mais un fait. Sur le graphique, les petites dents de scie
+        sont les saisons, et la montée générale vient de l'activité humaine.
+    </p>
+    <img src="https://scrippsco2.ucsd.edu/wp-content/uploads/sites/533/2026/01/mlo_record.png" alt="Schéma simplifié de la courbe de Keeling, de 1958 à 2005">
+</div>
+
+<div id="fin" class="presentation">
+    <h2>Conclusions</h2>
+    <p>
+        Keeling a prouvé qu'une mesure simple, refaite pendant presque cinquante ans,
+        pouvait changer notre vision du climat.
+    </p>
+    <ul>
+        <li>La courbe de Keeling est devenue un symbole de l'impact de l'être humain sur la planète.</li>
+        <li>Elle montre à quel point les mesures sur le long terme sont importantes en science.</li>
+        <li>Ses mesures continuent à Mauna Loa, et des appartements de l'université de San Diego portent son nom.</li>
+    </ul>
+</div>
+
+<footer id="sources">
+    <h2>Sources</h2>
+    <ul>
+        <li>
+            Scripps CO₂ Program (UC San Diego) :
+            <a href="https://scrippsco2.ucsd.edu/history-and-legacy/charles-david-keeling-biography/" target="_blank" rel="noopener">Charles David Keeling Biography</a>
+        </li>
+        <li>
+            Keeling Curve (UC San Diego) :
+            <a href="https://keelingcurve.ucsd.edu/?p=276" target="_blank" rel="noopener">The History of the Keeling Curve</a>
+        </li>
+        <li>
+            Université de l'Illinois (département de chimie) :
+            <a href="https://chemistry.illinois.edu/news-events/events/lectures/charles-david-keeling-lecture-series/about-charles-david-keeling" target="_blank" rel="noopener">About Charles David Keeling</a>
+        </li>
+        <li>
+            Honolulu Magazine :
+            <a href="https://www.honolulumagazine.com/ahead-of-the-curve/" target="_blank" rel="noopener">Ahead of the Curve</a>
+        </li>
+    </ul>
+    <p class="credit">Photo : Wikimedia Commons. Graphique: <a href="https://scrippsco2.ucsd.edu/history-and-legacy/keeling-curve-lessons/" target="_blank" rel="noopener">Keeling Curve</a>. Présentation réalisée par Tom C. </p>
+    <p class="credit">Claude pour la recherche de sources fiables.</p>
+</footer>
+</body>
+</html>
